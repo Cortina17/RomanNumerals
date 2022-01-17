@@ -4,25 +4,6 @@ namespace App;
 
 class Number
 {
-
-    public function toRoman($number)
-    {
-        $returnRoman = '';
-
-        while ($number > 0) {
-            foreach ($this->rate as $roman => $value) {
-                if ($number >= $value) {
-                    $number -= $value;
-                    $returnRoman .= $roman;
-                    break;
-                }
-            }
-        }
-        return $returnRoman;
-    }
-
-    public $rate = [];
-
     public function __construct()
     {
         $this->rate = [
@@ -41,8 +22,26 @@ class Number
             'I' => 1
         ];
     }
+
+    public $rate = [];
     
+    public function toRoman($number)
+    {
+        $returnRoman = '';
+
+        while ($number > 0) {
+            foreach ($this->rate as $roman => $value) {
+                if ($number >= $value) {
+                    $number -= $value;
+                    $returnRoman .= $roman;
+                    break;
+                }
+            }
+        }
+        
+        return $returnRoman;
+    }
 }
 
 // $pepe = new Number;
-// echo $pepe->toRoman(87);
+// echo $pepe->toRoman(3);
